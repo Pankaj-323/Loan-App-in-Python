@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Successful</title>
+</head>
+<body>
+    <div>
+        <h1>Loan Application Submitted</h1>
+    <a href="{{  url_for('add')  }}"><button id="application">Add Application</button></a>
+    <a href="{{  url_for('list_applications')  }}"><button id="application">View Application</button></a>
+    </div>
+</body>
+</html>

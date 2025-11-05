@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>add_application</title>
+</head>
+
+<body>
+    <div>
+        <h1>Add your Data</h1><br>
+
+        <a href="{{ url_for('list_applications') }}" ><button id="application">View all Application</button>
+        </a>
+        
+        <div class="container">
+            <form method="POST" action="/" >
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name"><br><br>
+
+                <label for="age">Age: </label>
+                <input type="number" name="age" id="age" placeholder="Your Age"><br><br>
+
+                <label for="income">Income:</label>
+                <input type="number" name="income" id="income" placeholder="Enter your Income"><br><br>
+
+                <label for="loan_amount">Loan Amount: </label>
+                <input type="number" name="loan_amount" id="loan_amount" placeholder="Enter your Loan Amount"><br><br>
+
+                <label for="credit_score">Credit Score: </label>
+                <input type="number" name="credit_score" id="credit_score"
+                    placeholder="Enter your Credit Score"><br><br>
+
+                <button id="submit" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

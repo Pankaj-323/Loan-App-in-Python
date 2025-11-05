@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>List</title>
+</head>
+<body>
+    <div>
+        <h1>All Applications</h1>
+        <div>            
+        <a href="{{  url_for('add')  }}"><button id="application">Application</button></a>
+        </div>
+        <div class="table">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Income</th>
+                    <th>Loan Amount</th>
+                    <th>Credit Score</th>
+                    <th>Status</th>
+                    <th>Reason</th>
+                    <th>Action</th>
+                </tr>
+                {% for application in loan_application %}
+                <tr >
+                    <td>{{ application[0] }}</td> 
+                    <td>{{ application[1] }}</td> 
+                    <td>{{ application[2] }}</td> 
+                    <td>{{ application[3] }}</td> 
+                    <td>{{ application[4] }}</td> 
+                    <td>{{ application[5] }}</td>
+                    <td>
+                        {% if application[3]|int >= 35000 and application[2]|int >= 21 and application[4]|int <= (5* (application[3]|int)) and application[5]|int >= 650 %}
+                            ☑️Approved
+                        {% else %}
+                            ❌ Rejected
+                        {% endif %}                     
+                    </td>
+                    <td>
+                        {% set approved = true %}
+
+                        {% if application[3]|int < 35000 %}
+                           <p>❌ Your Income Must Be ₹35000 or Greater</p>
+                           {% set approved = false %}
+                        {% endif %} 
+                        
+                        {% if application[2]|int < 21 %}
+                           <p>❌ Your Age Must Be 21 or Above</p>
+                           {% set approved = false %}
+                        {% endif %} 
+                        
+                        {% if application[4]|int > (5*(application[3]|int)) %}
+                           <p>❌ Your Loan Amount Must Be At Most 5x Your Income</p>
+                           {% set approved = false %}
+                        {% endif %} 
+                        
+                        {% if application[5]|int < 650 %}
+                           <p>❌ Your Credit Score Must Be 650 or Above</p>
+                           {% set approved = false %}
+                        {% endif %} 
+
+                        {% if approved %}
+                            <p>☑️Your loan has Approved</p>
+                        {% endif %} 
+                    </td>
+                    <td>
+                        <a href="{{ url_for('edit', application_id=application[0]) }}"><button id="edit">Edit</button></a>
+                        <a href="{{ url_for('delete', application_id=application[0]) }}"><button id="delete">Delete</button></a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+         </div>
+    </div>
+</body>
+</html>

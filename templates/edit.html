@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_edit.css') }}">
+    <title>Edit Application</title>
+</head>
+<body>
+    <h1>Edit Application</h1><br>
+    <div class="container">
+        <form method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" value="{{ application[1] }}"><br><br>
+
+            <label>Age:</label>
+            <input type="number" name="age" value="{{ application[2] }}"><br><br>
+
+            <label>Income:</label>
+            <input type="number" name="income" value="{{ application[3] }}"><br><br>
+
+            <label>Loan Amount:</label>
+            <input type="number" name="loan_amount" value="{{ application[4] }}"><br><br>
+
+            <label>Credit Score:</label>
+            <input type="number" name="credit_score" value="{{ application[5] }}"><br><br>
+
+            <button type="submit" class="update">Update</button>
+            
+             <a href="{{ url_for('list_applications') }}"><button id="application">Back to List</button></a>
+        </form>
+    </div>
+</body>
+</html>
